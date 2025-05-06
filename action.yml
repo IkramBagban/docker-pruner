@@ -1,13 +1,18 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Docker VM Cleanup'
+description: 'SSH into a VM and remove unused Docker containers/images'
 inputs:
-  who-to-greet:
-    description: 'Who to greet'
+  host:
+    description: 'VM Host (IP or domain)'
     required: true
-    default: 'World'
-outputs:
-  time: 
-    description: 'The time we greeted you'
+  username:
+    description: 'SSH username'
+    required: true
+  key:
+    description: 'Private SSH key'
+    required: true  
+  thresholdDays:
+    description: 'Remove unused images & containers older than X days (optional)'
+    required: false
 runs:
   using: 'node20'
   main: 'index.js'
